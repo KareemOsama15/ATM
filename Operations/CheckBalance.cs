@@ -1,5 +1,6 @@
 ﻿using System;
 using ATM.Utils;
+using ATM.FileStorage;
 
 namespace ATM.Operations
 {
@@ -20,6 +21,8 @@ namespace ATM.Operations
 
             context.CurrentUser.FinancialOperations.Reports["CheckBalance"].
                 Add($"ID({TransactionId}) : You have {context.CurrentUser.Balance:C} in your account, on {Timestamp}");
+
+            FileStorageService.SaveToFile(FileStorageService.ATMFilePath, context.Users);
         }
     }
 

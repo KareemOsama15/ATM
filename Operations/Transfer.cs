@@ -1,5 +1,6 @@
 ﻿using System;
 using ATM.Utils;
+using ATM.FileStorage;
 
 namespace ATM.Operations
 {
@@ -39,14 +40,17 @@ namespace ATM.Operations
         {
             Console.WriteLine("1. Transfer Money\n2. Recieve Money");
             string choice = Validation.UserInput("Enter your choice: ");
+
             switch (choice)
             {
                 case "1":
                     TransferMoney(context);
                     break;
+
                 case "2":
                     ReceiveMoney(context);
                     break;
+
                 default:
                     Console.WriteLine("Invalid choice.");
                     break;
@@ -80,6 +84,8 @@ namespace ATM.Operations
                             Console.WriteLine($"You have transferred: {amount:C} to {user.Username} with Id {user.UserId} on {transfer.Timestamp}\nYour Current Balance is {context.CurrentUser.Balance:C}");
                             context.CurrentUser.FinancialOperations.Reports["Transfer"].Add($"ID({transfer.TransactionId}) : You Transferred {amount:C} to {user.Username} with Id {user.UserId} on {transfer.Timestamp}" +
                                 $", Your Current Balance is {context.CurrentUser.Balance:C}");
+
+                            FileStorageService.SaveToFile(FileStorageService.ATMFilePath, context.Users);
                         }
                         else Console.WriteLine("Your balance is not enough.");
                     }
@@ -138,6 +144,8 @@ namespace ATM.Operations
                 context.CurrentUser.CheckDeleteAccountPossibility(receiveOperation);
 
                 context.CurrentUser.Transfers.Remove(receiveOperation);
+
+                FileStorageService.SaveToFile(FileStorageService.ATMFilePath, context.Users);
             }
         }
     }

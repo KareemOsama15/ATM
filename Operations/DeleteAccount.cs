@@ -1,5 +1,6 @@
 ﻿using System;
 using ATM.Utils;
+using ATM.FileStorage;
 
 namespace ATM.Operations
 {
@@ -16,6 +17,8 @@ namespace ATM.Operations
                 if (context.CurrentUser.DeleteAccountPossibility)
                 {
                     context.Users.Remove(context.CurrentUser);
+                    FileStorageService.SaveToFile(FileStorageService.ATMFilePath, context.Users);
+
                     Console.WriteLine("Your account has been deleted.");
                     Console.WriteLine("\n===================================\n");
                     context.AtmInstance.Start();

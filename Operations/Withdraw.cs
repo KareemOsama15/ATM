@@ -1,5 +1,6 @@
 ﻿using System;
 using ATM.Utils;
+using ATM.FileStorage;
 
 namespace ATM.Operations
 {
@@ -24,6 +25,8 @@ namespace ATM.Operations
                 context.CurrentUser.Balance -= amount;
                 Console.WriteLine($"You have withdrawn: {amount:C}");
                 context.CurrentUser.FinancialOperations.Reports["Withdraw"].Add($"ID({TransactionId}) : You withdrew {amount:C} on {Timestamp}");
+
+                FileStorageService.SaveToFile(FileStorageService.ATMFilePath, context.Users);
             }
             else if (amount > context.CurrentUser.Balance)
                 Console.WriteLine("Your balance is not enough.");

@@ -1,5 +1,6 @@
 ﻿using System;
 using ATM.Utils;
+using ATM.FileStorage;
 
 namespace ATM.Operations
 {
@@ -22,7 +23,9 @@ namespace ATM.Operations
             context.CurrentUser.Balance += amount;
             Console.WriteLine($"You have deposited: {amount:C}");
             context.CurrentUser.FinancialOperations.Reports["Deposit"].Add($"ID({TransactionId}) : You deposited {amount:C} on {Timestamp}");
-            
+
+            FileStorageService.SaveToFile(FileStorageService.ATMFilePath, context.Users);
+
         }
     }
 

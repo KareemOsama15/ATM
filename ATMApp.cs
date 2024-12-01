@@ -1,17 +1,13 @@
 ﻿using ATM.Operations;
 using ATM.Utils;
+using ATM.FileStorage;
 using System;
 
 namespace ATM
 {
     public class ATMApp
     {
-        public List<User> users = new List<User>();
-        //{ 
-        //    new User("kareem", "123", "kareem@example.com", 1000),
-        //    new User("ali", "456", "ali@example.com", 2000),
-        //    new User("amr", "789", "amr@example.com", 3000)
-        //};
+        public List<User> users = FileStorageService.LoadFromFile<User>(FileStorageService.ATMFilePath);
 
         public void Start()
         {
@@ -32,6 +28,7 @@ namespace ATM
                         break;
 
                     case "3":
+                        FileStorageService.SaveToFile(FileStorageService.ATMFilePath, users);
                         Console.WriteLine("--- Thank you for using the ATM System  ---");
                         Environment.Exit(0);
                         break;
@@ -62,34 +59,45 @@ namespace ATM
                     case "1":
                         atmOperations[0].Execute(context);
                         break;
+
                     case "2":
                         atmOperations[1].Execute(context);
                         break;
+
                     case "3":
                         atmOperations[2].Execute(context);
                         break;
+
                     case "4":
                         context.CurrentUser.FinancialOperations.Execute(context);
                         break;
+
                     case "5":
                         context.CurrentUser.ManagerialOperations.Execute(context);
                         break;
+
                     case "6":
                         transferOperation = new Transfer();
                         transferOperation.Execute(context);
                         break;
+
                     case "7":
                         context.CurrentUser.DisplayUserInfo();
                         break;
+
                     case "8":
                         atmOperations[3].Execute(context);
                         break;
+
                     case "9":
                         logout = true;
                         context.CurrentUser.ManagerialOperations.Reports["Logout"].Add($"You Logged out from your account on {DateTime.Now}");
+                        FileStorageService.SaveToFile(FileStorageService.ATMFilePath, users);
+
                         Console.WriteLine("Logout successful.");
                         Console.WriteLine("\n===================================\n");
                         break;
+
                     default:
                         Console.WriteLine("Invalid choice. Please try again.");
                         break;
@@ -107,6 +115,8 @@ namespace ATM
             {
                 ATMContext context = new ATMContext(this, users, user);
                 user.ManagerialOperations.Reports["Login"].Add($"You logged in to your account on {DateTime.Now}");
+
+                FileStorageService.SaveToFile(FileStorageService.ATMFilePath, users);
                 ShowMenu(context);
             }
             else
@@ -144,6 +154,8 @@ namespace ATM
             User newUser = new User(enteredUsername, enteredPassword, enteredEmail, enteredBalance);
             users.Add(newUser);
             newUser.ManagerialOperations.Reports["Account Creation"].Add($"Your account created on {DateTime.Now}");
+
+            FileStorageService.SaveToFile(FileStorageService.ATMFilePath, users);
 
             Console.WriteLine($"User {newUser.Username} created successfully.");
             Console.WriteLine("===================================\n");

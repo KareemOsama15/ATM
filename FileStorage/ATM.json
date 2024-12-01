@@ -1,0 +1,143 @@
+{
+  "$id": "1",
+  "$values": [
+    {
+      "$id": "2",
+      "UserId": "bdd780c4-fbef-4d07-a2b6-ff35510108d5",
+      "Username": "ali",
+      "Password": "123",
+      "Email": "ali@ex.com",
+      "Balance": 4750,
+      "DeleteAccountPossibility": false,
+      "ManagerialOperations": {
+        "$id": "3",
+        "Reports": {
+          "$id": "4",
+          "Account Creation": {
+            "$id": "5",
+            "$values": [
+              "Your account created on 12/1/2024 10:17:01 PM"
+            ]
+          },
+          "Login": {
+            "$id": "6",
+            "$values": [
+              "You logged in to your account on 12/1/2024 10:17:05 PM",
+              "You logged in to your account on 12/1/2024 10:23:48 PM",
+              "You logged in to your account on 12/1/2024 10:41:23 PM",
+              "You logged in to your account on 12/1/2024 11:40:28 PM"
+            ]
+          },
+          "Logout": {
+            "$id": "7",
+            "$values": [
+              "You Logged out from your account on 12/1/2024 11:43:22 PM"
+            ]
+          }
+        }
+      },
+      "FinancialOperations": {
+        "$id": "8",
+        "Reports": {
+          "$id": "9",
+          "Deposit": {
+            "$id": "10",
+            "$values": []
+          },
+          "Withdraw": {
+            "$id": "11",
+            "$values": []
+          },
+          "CheckBalance": {
+            "$id": "12",
+            "$values": [
+              "ID(378e40b4-79a5-4d5b-bb30-e95b9716196d) : You have $5,000.00 in your account, on 12/1/2024 10:17:05 PM",
+              "ID(378e40b4-79a5-4d5b-bb30-e95b9716196d) : You have $5,000.00 in your account, on 12/1/2024 10:17:05 PM",
+              "ID(1b00d879-e7bd-45b5-960b-2bc2f079e069) : You have $5,000.00 in your account, on 12/1/2024 10:23:48 PM",
+              "ID(5a27b1a2-d181-429e-84a9-4c9d808051d4) : You have $5,000.00 in your account, on 12/1/2024 11:40:28 PM"
+            ]
+          },
+          "Transfer": {
+            "$id": "13",
+            "$values": [
+              "ID(99bcc9f6-0ba0-4bbb-a49c-785909d705b5) : You Transferred $250.00 to kareem with Id 1e3ecb46-4c3c-42f4-8d1d-1b0de9a917c2 on 12/1/2024 11:42:39 PM, Your Current Balance is $4,750.00"
+            ]
+          }
+        }
+      },
+      "Transfers": {
+        "$id": "14",
+        "$values": []
+      }
+    },
+    {
+      "$id": "15",
+      "UserId": "1e3ecb46-4c3c-42f4-8d1d-1b0de9a917c2",
+      "Username": "kareem",
+      "Password": "789",
+      "Email": "kareem@G.com",
+      "Balance": 9250,
+      "DeleteAccountPossibility": false,
+      "ManagerialOperations": {
+        "$id": "16",
+        "Reports": {
+          "$id": "17",
+          "Account Creation": {
+            "$id": "18",
+            "$values": [
+              "Your account created on 12/1/2024 10:38:07 PM"
+            ]
+          },
+          "Login": {
+            "$id": "19",
+            "$values": [
+              "You logged in to your account on 12/1/2024 10:38:21 PM",
+              "You logged in to your account on 12/1/2024 11:43:40 PM"
+            ]
+          },
+          "Logout": {
+            "$id": "20",
+            "$values": [
+              "You Logged out from your account on 12/1/2024 10:39:10 PM"
+            ]
+          }
+        }
+      },
+      "FinancialOperations": {
+        "$id": "21",
+        "Reports": {
+          "$id": "22",
+          "Deposit": {
+            "$id": "23",
+            "$values": [
+              "ID(af6e3747-d787-4a4a-ba0e-0b9a24bde68e) : You deposited $2,000.00 on 12/1/2024 10:38:21 PM"
+            ]
+          },
+          "Withdraw": {
+            "$id": "24",
+            "$values": [
+              "ID(d2729241-c62d-43c5-a746-993bac7fb105) : You withdrew $3,000.00 on 12/1/2024 10:38:21 PM"
+            ]
+          },
+          "CheckBalance": {
+            "$id": "25",
+            "$values": [
+              "ID(4bab1316-4183-4c81-895f-15964ad69da9) : You have $10,000.00 in your account, on 12/1/2024 10:38:21 PM",
+              "ID(4bab1316-4183-4c81-895f-15964ad69da9) : You have $9,000.00 in your account, on 12/1/2024 10:38:21 PM"
+            ]
+          },
+          "Transfer": {
+            "$id": "26",
+            "$values": [
+              "ID(99bcc9f6-0ba0-4bbb-a49c-785909d705b5) : You Accepted the transfer of $250.00 from ali with Id bdd780c4-fbef-4d07-a2b6-ff35510108d5 on 12/1/2024 11:42:39 PM, Your Current Balance is $9,250.00"
+            ]
+          }
+        }
+      },
+      "Transfers": {
+        "$id": "27",
+        "$values": []
+      }
+    }
+  ]
+}
